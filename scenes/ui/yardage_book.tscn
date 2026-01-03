@@ -1,0 +1,162 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy7k3nxqw8ybb"]
+
+[ext_resource type="Script" path="res://scripts/ui/yardage_book_ui.gd" id="1_book"]
+
+[node name="YardageBook" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_book")
+
+[node name="BookPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPage" type="Panel" parent="BookPanel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 390.0
+grow_vertical = 2
+
+[node name="HoleName" type="Label" parent="BookPanel/LeftPage"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 380.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 28
+text = "HOLE 14 - PAR 3"
+horizontal_alignment = 1
+
+[node name="HoleInfo" type="Label" parent="BookPanel/LeftPage"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 380.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 20
+text = "165 YARDS"
+horizontal_alignment = 1
+
+[node name="Separator" type="HSeparator" parent="BookPanel/LeftPage"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 85.0
+offset_right = 380.0
+offset_bottom = 90.0
+
+[node name="Yardages" type="VBoxContainer" parent="BookPanel/LeftPage"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 370.0
+offset_bottom = 500.0
+
+[node name="YardageExample1" type="Label" parent="BookPanel/LeftPage/Yardages"]
+layout_mode = 2
+text = "Front of green: 155 yards"
+
+[node name="YardageExample2" type="Label" parent="BookPanel/LeftPage/Yardages"]
+layout_mode = 2
+text = "Pin: 165 yards"
+
+[node name="YardageExample3" type="Label" parent="BookPanel/LeftPage/Yardages"]
+layout_mode = 2
+text = "Back of green: 180 yards"
+
+[node name="RightPage" type="Panel" parent="BookPanel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -390.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="GreenTitle" type="Label" parent="BookPanel/RightPage"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 380.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 20
+text = "GREEN DIAGRAM"
+horizontal_alignment = 1
+
+[node name="GreenInfo" type="Label" parent="BookPanel/RightPage"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 380.0
+offset_bottom = 150.0
+text = "Green: 30 yards deep
+Back to front slope
+Speed: Fast"
+
+[node name="PinInfo" type="Label" parent="BookPanel/RightPage"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 160.0
+offset_right = 380.0
+offset_bottom = 250.0
+text = "PIN: Back Right
+4 paces from right edge
+8 paces from back"
+
+[node name="Separator2" type="HSeparator" parent="BookPanel/RightPage"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 260.0
+offset_right = 380.0
+offset_bottom = 265.0
+
+[node name="NotesTitle" type="Label" parent="BookPanel/RightPage"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 275.0
+offset_right = 380.0
+offset_bottom = 305.0
+theme_override_font_sizes/font_size = 18
+text = "NOTES"
+
+[node name="Notes" type="Label" parent="BookPanel/RightPage"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 310.0
+offset_right = 380.0
+offset_bottom = 500.0
+text = "Miss left is dead.
+Club up in the wind.
+Green runs away from you."
+autowrap_mode = 2
+
+[node name="CloseHint" type="Label" parent="BookPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -30.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press TAB to close"
+horizontal_alignment = 1

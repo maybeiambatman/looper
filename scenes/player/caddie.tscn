@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv2h3xqw8kgn4"]
+
+[ext_resource type="Script" path="res://scripts/player/caddie_controller.gd" id="1_caddie"]
+
+[node name="Caddie" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_caddie")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_abc")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+current = true
+fov = 75.0
+
+[node name="InteractionRay" type="RayCast3D" parent="CameraPivot/Camera3D"]
+target_position = Vector3(0, 0, -500)
+collision_mask = 29
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_abc"]
+radius = 0.3
+height = 1.8
