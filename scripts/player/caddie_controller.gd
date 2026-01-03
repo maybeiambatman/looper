@@ -101,27 +101,28 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not can_move or is_in_menu:
-		return
-
-	# Get input direction
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-
-	# Apply movement
-	var speed := crouch_speed if is_crouching else walk_speed
-	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
-
-	# Gravity
+	# Always apply gravity
 	if not is_on_floor():
 		velocity.y -= 9.8 * delta
 	else:
 		velocity.y = 0
+
+	# Handle movement input only when allowed
+	if can_move and not is_in_menu:
+		var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+		var speed := crouch_speed if is_crouching else walk_speed
+		if direction:
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
+	else:
+		# Stop horizontal movement when can't move
+		velocity.x = move_toward(velocity.x, 0, walk_speed)
+		velocity.z = move_toward(velocity.z, 0, walk_speed)
 
 	move_and_slide()
 
