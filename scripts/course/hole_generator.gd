@@ -10,7 +10,7 @@ const HOLE_17_TYPES := [Enums.HoleType.PAR_4_POSITIONAL]
 const HOLE_18_TYPES := [Enums.HoleType.PAR_5_REACHABLE]
 
 # Pin position variations
-const PIN_POSITIONS := ["front-left", "front-center", "front-right", "middle-left", "middle-center", "middle-right", "back-left", "back-center", "back-right"]
+const PIN_POSITIONS: Array[String] = ["front-left", "front-center", "front-right", "middle-left", "middle-center", "middle-right", "back-left", "back-center", "back-right"]
 
 
 static func generate_run(difficulty: int, _trinkets: Array) -> Array:
@@ -146,8 +146,8 @@ static func _generate_landmarks(hole: HoleData) -> Array[Dictionary]:
 
 
 static func _generate_pin_position(hole: HoleData) -> void:
-	var pin_pos := PIN_POSITIONS[randi() % PIN_POSITIONS.size()]
-	var parts := pin_pos.split("-")
+	var pin_pos: String = PIN_POSITIONS[randi() % PIN_POSITIONS.size()]
+	var parts: PackedStringArray = pin_pos.split("-")
 
 	hole.pin_position_description = pin_pos.replace("-", " ").capitalize()
 
