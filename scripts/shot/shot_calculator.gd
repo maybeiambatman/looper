@@ -64,7 +64,7 @@ static func _get_base_accuracy(player: GolferAttributes, shot_type: Enums.ShotTy
 static func _evaluate_club_selection(rec: ShotRecommendation, player: GolferAttributes) -> float:
 	var ideal_distance := rec.intended_distance
 	var club_distance := player.get_club_distance(rec.club)
-	var difference := abs(club_distance - ideal_distance)
+	var difference: float = absf(float(club_distance) - ideal_distance)
 
 	if difference <= 3:
 		return 10.0  # Perfect club
@@ -93,7 +93,7 @@ static func _evaluate_shot_shape(rec: ShotRecommendation, lie: Enums.LieType, co
 	if conditions.wind_speed > 10:
 		var wind_angle := atan2(conditions.wind_direction.x, conditions.wind_direction.z)
 		var shot_angle := atan2(rec.target_direction.x, rec.target_direction.z)
-		var angle_diff := abs(wind_angle - shot_angle)
+		var angle_diff: float = absf(wind_angle - shot_angle)
 
 		# Fade into left wind or draw into right wind is good
 		if rec.shot_shape == Enums.ShotShape.FADE and angle_diff > PI * 0.5:

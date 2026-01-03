@@ -66,8 +66,8 @@ func get_best_club_for_distance(target_distance: float) -> String:
 	for club_name in club_distances:
 		if club_name == "putter":
 			continue
-		var club_dist: int = club_distances[club_name]
-		var diff := abs(club_dist - target_distance)
+		var club_dist: int = int(club_distances[club_name])
+		var diff: float = absf(float(club_dist) - target_distance)
 		if diff < best_diff:
 			best_diff = diff
 			best_club = club_name
