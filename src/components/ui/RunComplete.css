@@ -1,0 +1,161 @@
+.run-complete-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.run-complete {
+  text-align: center;
+  color: white;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+.run-complete h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.run-complete h1.victory {
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.run-complete h1.defeat {
+  color: #f44336;
+}
+
+.final-scores {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}
+
+.score-row.player {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.score-row .score {
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.4rem;
+}
+
+.run-stats {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.run-stats h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.stat {
+  text-align: left;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.stat-value.good {
+  color: #4caf50;
+}
+
+.stat-value.bad {
+  color: #f44336;
+}
+
+.progression-update {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.progression-update h3 {
+  margin: 0 0 0.75rem 0;
+  color: #4caf50;
+}
+
+.level-display {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.level-display .xp {
+  opacity: 0.8;
+}
+
+.record {
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.play-again-btn,
+.menu-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.play-again-btn {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  color: white;
+}
+
+.menu-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.play-again-btn:hover,
+.menu-btn:hover {
+  transform: scale(1.02);
+}
