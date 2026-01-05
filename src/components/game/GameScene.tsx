@@ -1,9 +1,10 @@
-import { Suspense } from 'react';
+import { Suspense, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Sky, Environment } from '@react-three/drei';
 import { Physics } from '@react-three/rapier';
 import { CaddieController } from './CaddieController';
 import { GolfBall, BallMarker } from './GolfBall';
+import { Golfer } from './Golfer';
 import { GolfCourse } from '../course';
 import { useGameStore } from '../../store/gameStore';
 
@@ -20,6 +21,9 @@ function GameWorld() {
   const phase = useGameStore((state) => state.phase);
   const isOnGreen = useGameStore((state) => state.isOnGreen);
   const completeHole = useGameStore((state) => state.completeHole);
+  const ballPosition = useGameStore((state) => state.ballPosition);
+  const holes = useGameStore((state) => state.holes);
+  const currentHoleIndex = useGameStore((state) => state.currentHoleIndex);
 
   const handleBallStop = () => {
     if (isOnGreen) {
@@ -27,6 +31,16 @@ function GameWorld() {
       completeHole();
     }
   };
+
+  // Calculate golfer rotation to face the green
+  const golferRotation = useMemo(() => {
+    const currentHole = holes[currentHoleIndex];
+    if (!currentHole) return 0;
+
+    const dx = currentHole.greenPosition.x - ballPosition.x;
+    const dz = currentHole.greenPosition.z - ballPosition.z;
+    return Math.atan2(dx, dz);
+  }, [holes, currentHoleIndex, ballPosition]);
 
   if (phase !== 'playing') return null;
 
@@ -72,6 +86,12 @@ function GameWorld() {
 
       {/* Ball position marker */}
       <BallMarker />
+
+      {/* Golfer character */}
+      <Golfer
+        position={[ballPosition.x, 0, ballPosition.z]}
+        rotation={golferRotation}
+      />
     </>
   );
 }
